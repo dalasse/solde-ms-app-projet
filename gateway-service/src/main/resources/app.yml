@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: r1
+            uri: http://localhost:8081/
+            predicates:
+              - Path=/employers/**
+          - id: r2
+            uri: http://localhost:8082/
+            predicates:
+              - Path=/familleEmployers/**
+    discovery:
+      enabled: true
+  application:
+    name: gateway-service
+server:
+  port: 8888
